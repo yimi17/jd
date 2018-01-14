@@ -604,3 +604,21 @@
 		}
 	}
 }();
+
+/*-------------------
+  图片懒加载
+-------------------*/
+$(function(){
+    var $img = $("img");
+
+    $img.each(function(){
+        $(this).attr("data-original",$(this).prop("src")).prop("src","");
+    });
+
+    $img.lazyload({
+        threshold : 50,     //提前显示
+        effect : "fadeIn",      //淡入效果
+        skip_invisible : false, //加载隐藏图片
+        failure_limit : 10      //当图像不连续时，控制加载行为，令插件找到 10 个不在可见区域的图片时才停止搜索
+    });
+});
